@@ -44,11 +44,11 @@ with open(filename) as f:
 content = [s.strip() for s in content]
 # print(content)
 
-transaction = []
+transactions = []
 for c in content[1:]:
     temp = c.replace(',', ' ').split(' ')[1:]
-    transaction.append(temp)
-# print(transaction)
+    transactions.append(temp)
+# print(transactions)
 
-L_test_data_csv = apriori(transaction, 18)
+L_test_data_csv = apriori(transactions, 18)
 print('L_test_data_csv:', L_test_data_csv)
