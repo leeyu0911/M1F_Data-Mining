@@ -13,17 +13,17 @@ def combinations_by_hash_tree(sequence, length, result):
         combinations_by_hash_tree(sequence[i + 1:], length, result)
 
 # finish
-def transaction_frequent(transaction, min_suport):
+def transaction_frequent(transactions, min_suport):
     """
     計算元素個數，並返回高於min_support的元素及個數
     :param transaction: list
     :param min_suport: int
-    :return: dict{transaction: sum}
+    :return: dict{transactions: sum}
     """
     transaction_dict = defaultdict(int)
-    for i in range(len(transaction)):
-        for j in range(len(transaction[i])):
-            transaction_dict[str(transaction[i][j])] += 1  # 在這邊把元素都轉成str
+    for i in range(len(transactions)):
+        for j in range(len(transactions[i])):
+            transaction_dict[str(transactions[i][j])] += 1  # 在這邊把元素都轉成str
 
     transaction_dict = {k: v for k, v in transaction_dict.items() if v >= min_suport}
 
