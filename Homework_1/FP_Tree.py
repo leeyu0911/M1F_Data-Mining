@@ -67,25 +67,22 @@ class FP_Tree:
         return header
 
     def _insert_node(self, items, node, header):
-        item = items[0]
-        child = node.get_child(item)  # 會指到 child node
-        if child is not None:
-            child.frequency += 1
-        else:
-            child = node.add_child(item)
-
-            # 處理header table next
-            if header[item] is None:
-                header[item] = child
+        for item in items:
+            child = node.get_child(item)  # 會指到 child node
+            if child is not None:
+                child.frequency += 1
             else:
-                pointer = header[item]
-                while pointer.next is not None:
-                    pointer = pointer.next
-                pointer.next = child
+                child = node.add_child(item)
 
-        recursive_items = items[1:]
-        if len(recursive_items) > 0:
-            self._insert_node(recursive_items, child, header)
+                # 處理header table next
+                if header[item] is None:
+                    header[item] = child
+                else:
+                    pointer = header[item]
+                    while pointer.next is not None:
+                        pointer = pointer.next
+                    pointer.next = child
+            node = child
 
     def _build_FP_Tree(self, transactions, frequent, header):
         root = FP_Node(None, None, None)
