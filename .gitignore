@@ -1,3 +1,6 @@
-.idea/
-.DS_Store
+.idea
 reference
+__pycache__
+
+
+.DS_Store
