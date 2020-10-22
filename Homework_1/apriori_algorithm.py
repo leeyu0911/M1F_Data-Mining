@@ -53,7 +53,7 @@ def search_and_delete(database, ck, min_support):
                 ck_dict[k] += 1
 
     ck_dict = {k: v for k, v in ck_dict.items() if v >= min_support}
-    print('ck_dict:', ck_dict)
+    # print('ck_dict:', ck_dict)
 
     # for key in ck_dict:  # RuntimeError: dictionary changed size during iteration
     #     if ck_dict[key] < min_support:
@@ -89,7 +89,7 @@ def apriori(database: list, min_support: int):
     k = 2
     while len(L[k - 1]) > 0:
         # print(k)
-        print('L%d' % k, L[k - 1])
+        # print('L%d' % k, L[k - 1])
         fe = flatten_element(L[k - 1].keys())
         # print('fe:', fe)
         Ck = sorted(set(itertools.combinations(fe, k)))  # TODO: 是否用set? type: [(a, b), ...]
