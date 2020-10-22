@@ -3,14 +3,14 @@ from Homework_1.apriori_algorithm import *
 
 # test from lecture
 database_str = [['a', 'c', 'd'],
-            ['b', 'c', 'e'],
-            ['a', 'b', 'c', 'e'],
-            ['b', 'e']]
+                ['b', 'c', 'e'],
+                ['a', 'b', 'c', 'e'],
+                ['b', 'e']]
 
 database_int = [[11, 33, 44],
-            [22, 33, 55],
-            [11, 22, 33, 55],
-            [22, 55]]
+                [22, 33, 55],
+                [11, 22, 33, 55],
+                [22, 55]]
 
 L = apriori(database_int, 2)
 print('test from lecture:', L)
@@ -38,7 +38,7 @@ int:
 
 
 # test data
-filename = 'test_data.csv'
+filename = './dataset/test_data.csv'
 with open(filename) as f:
     content = f.readlines()
 content = [s.strip() for s in content]
