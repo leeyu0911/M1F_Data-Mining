@@ -1,5 +1,6 @@
 import itertools
 from collections import defaultdict
+from tqdm import tqdm
 
 # d = {'a':1, 'b': 2, 'c': 3}
 
@@ -47,7 +48,7 @@ def search_and_delete(database, ck, min_support):
 
     ck_dict = defaultdict(int)
 
-    for k in ck:  # 每一筆組合對database做搜尋
+    for k in tqdm(ck):  # 每一筆組合對database做搜尋
         for data in database:
             if set(k).issubset([str(i) for i in data]):  # 轉成 str 以處理 row data 為 int
                 ck_dict[k] += 1
@@ -55,9 +56,9 @@ def search_and_delete(database, ck, min_support):
     ck_dict = {k: v for k, v in ck_dict.items() if v >= min_support}
     # print('ck_dict:', ck_dict)
 
-    # for key in ck_dict:  # RuntimeError: dictionary changed size during iteration
+    # for key in ck_dict:
     #     if ck_dict[key] < min_support:
-    #         del ck_dict[key]
+    #         del ck_dict[key]  # RuntimeError: dictionary changed size during iteration
 
     return ck_dict
 
@@ -77,7 +78,7 @@ def flatten_element(element):
         else:
             flatten_list.append(key)
 
-    return sorted(set(flatten_list))
+    return frozenset(flatten_list)  # sorted(set(flatten_list))
 
 # main finish
 def apriori(database: list, min_support: int):
@@ -92,7 +93,7 @@ def apriori(database: list, min_support: int):
         # print('L%d' % k, L[k - 1])
         fe = flatten_element(L[k - 1].keys())
         # print('fe:', fe)
-        Ck = sorted(set(itertools.combinations(fe, k)))  # TODO: 是否用set? type: [(a, b), ...]
+        Ck = frozenset(itertools.combinations(fe, k))  # sorted(set(itertools.combinations(fe, k)))  # TODO: 是否用set? type: [(a, b), ...]
         # print('Ck:', Ck)
         Lk = search_and_delete(database, Ck, min_support)  # type: dict
         L.append(Lk)
