@@ -53,7 +53,7 @@ def deal_kaggle_data(filename='./dataset/groceries - groceries.csv'):
     return transactions
 
 
-def deal_IBM_data(filename='./dataset/test_data.csv'):
+def deal_IBM_data(filename='./dataset/IBM_data_generator.csv'):
     """
     format:
     TID,item
@@ -133,7 +133,6 @@ def to_file(content: dict, filename):
     f.close()
 
 
-
 if __name__ == '__main__':
     # Apriori test
     task1 = [Apriori_test_set.test_from_lecture, Apriori_test_set.test_from_kaggle,
@@ -142,7 +141,6 @@ if __name__ == '__main__':
     # print(str(task1[0]).split(' '))  # ['<function', 'Apriori_test_set.test_from_lecture', 'at', '0x7fa8f2d62d40>']
     # for i, t in enumerate(task1):
     #     to_file(t(arg[i]), str(task1[i]).split(' ')[1] + '.json')
-
 
     # FP_Growth test
     task2 = [FP_Growth_test_set.test_from_lecture, FP_Growth_test_set.test_from_kaggle,
