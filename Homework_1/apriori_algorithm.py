@@ -17,14 +17,14 @@ def combinations_by_hash_tree(sequence, length, result):
 def transaction_frequent(transactions, min_suport):
     """
     計算元素個數，並返回高於min_support的元素及個數
-    :param transaction: list
+    :param transactions: list
     :param min_suport: int
     :return: dict{transactions: sum}
     """
     transaction_dict = defaultdict(int)
     for i in range(len(transactions)):
         for j in range(len(transactions[i])):
-            transaction_dict[str(transactions[i][j])] += 1  # 在這邊把元素都轉成str
+            transaction_dict[tuple((str(transactions[i][j]),))] += 1  # 在這邊把元素 -> str -> tuple
 
     transaction_dict = {k: v for k, v in transaction_dict.items() if v >= min_suport}
 
@@ -78,7 +78,7 @@ def flatten_element(element):
         else:
             flatten_list.append(key)
 
-    return frozenset(flatten_list)  # sorted(set(flatten_list))
+    return sorted(frozenset(flatten_list))  # sorted(set(flatten_list))
 
 # main finish
 def apriori(database: list, min_support: int):
@@ -93,10 +93,14 @@ def apriori(database: list, min_support: int):
         # print('L%d' % k, L[k - 1])
         fe = flatten_element(L[k - 1].keys())
         # print('fe:', fe)
-        Ck = frozenset(itertools.combinations(fe, k))  # sorted(set(itertools.combinations(fe, k)))  # TODO: 是否用set? type: [(a, b), ...]
+        Ck = list(itertools.combinations(fe, k))  # sorted(set(itertools.combinations(fe, k)))  # 是否用set? type: [(a, b), ...]
         # print('Ck:', Ck)
         Lk = search_and_delete(database, Ck, min_support)  # type: dict
         L.append(Lk)
         k += 1
 
-    return L
+    result = {}
+    for i in range(1, len(L)-1):
+        result = {**result, **L[i]}  # 合併字典
+
+    return result
