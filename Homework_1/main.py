@@ -3,8 +3,6 @@ macOS: 10.15.7（19H2）
 python: 3.7
 pycharm: 2020.2.3
 """
-from Homework_1.reference.pyfpgrowth import *
-
 from Homework_1.FP_Growth import *
 from Homework_1.apriori_algorithm import *
 
@@ -102,17 +100,27 @@ class Apriori_test_set:
 class FP_Growth_test_set:
 
     @staticmethod
-    def test_from_lecture(chose_type=1, min_support=2):
+    def test_from_lecture(**kwargs):
+        """chose_type=1, min_support=2, confidence=0.6"""
+        chose_type = kwargs.get('chose_type', 1)
+        min_support = kwargs.get('min_support', 2)
+        confidence = kwargs.get('confidence', 0.6)
+
         transactions = deal_lecture_data(chose_type)
-        FP_Tree(transactions, min_support).result()
+        p = find_frequent_patterns(transactions, min_support)
+        return generate_association_rules(p, confidence)
 
     @staticmethod
-    def test_from_kaggle(min_support=50):
+    def test_from_kaggle(min_support=50, confidence=0.6):
         transactions = deal_kaggle_data()
+        p = find_frequent_patterns(transactions, min_support)
+        return generate_association_rules(p, confidence)
 
     @staticmethod
-    def test_from_IBMdata(min_support=18):
+    def test_from_IBMdata(min_support=18, confidence=0.6):
         transactions = deal_IBM_data()
+        p = find_frequent_patterns(transactions, min_support)
+        return generate_association_rules(p, confidence)
 
 
 def to_file(content: dict, filename):
@@ -128,19 +136,22 @@ def to_file(content: dict, filename):
 
 if __name__ == '__main__':
     # Apriori test
-    task = [Apriori_test_set.test_from_lecture, Apriori_test_set.test_from_kaggle,
-            Apriori_test_set.test_from_IBMdata]
-    arg = [2, 600, 50]
-    print(str(task[0]).split(' '))  # ['<function', 'Apriori_test_set.test_from_lecture', 'at', '0x7fa8f2d62d40>']
-    for i, t in enumerate(task):
-        to_file(t(arg[i]), str(task[i]).split(' ')[1] + '.txt')
+    task1 = [Apriori_test_set.test_from_lecture, Apriori_test_set.test_from_kaggle,
+             Apriori_test_set.test_from_IBMdata]
+    arg1 = [2, 600, 50]
+    # print(str(task1[0]).split(' '))  # ['<function', 'Apriori_test_set.test_from_lecture', 'at', '0x7fa8f2d62d40>']
+    # for i, t in enumerate(task1):
+    #     to_file(t(arg[i]), str(task1[i]).split(' ')[1] + '.json')
 
 
     # FP_Growth test
-
-    # FP_Growth_test_set.test_from_lecture()
-
-    # print((find_frequent_patterns(transactions, 18)))
-    # print((find_frequent_patterns(deal_lecture_data(), 2)))
-
-    # print(deal_IBM_data())
+    task2 = [FP_Growth_test_set.test_from_lecture, FP_Growth_test_set.test_from_kaggle,
+             FP_Growth_test_set.test_from_IBMdata]
+    arg2 = [{'chose_type': 1, 'min_support': 2, 'confidence': 0.6},
+            {'min_support': 50, 'confidence': 0.6},
+            {'min_support': 18, 'confidence': 0.6}]
+    for i, t in enumerate(task2):
+        to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + '.json')
+        print(str(task2[i]).split(' ')[1])
+        print(t(**arg2[i]))
+        print()
