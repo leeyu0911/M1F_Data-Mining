@@ -79,12 +79,12 @@ Use IBM Quest Synthetic Data Generator
       ```
     * test_from_kaggle(min_support=50)  
       ```python
-      >>> test_from_kaggle(600)
+      >>> Apriori_test_set.test_from_kaggle(600)
       {('citrus fruit',): 814, ('tropical fruit',): 1032, ('yogurt',): 1372, ('whole milk',): 2513, ('pip fruit',): 744, ('other vegetables',): 1903, ('rolls/buns',): 1809, ('bottled beer',): 792, ('bottled water',): 1087, ('soda',): 1715, ('fruit/vegetable juice',): 711, ('newspapers',): 785, ('pastry',): 875, ('root vegetables',): 1072, ('canned beer',): 764, ('sausage',): 924, ('brown bread',): 638, ('shopping bags',): 969, ('whipped/sour cream',): 705, ('domestic eggs',): 624, ('other vegetables', 'whole milk'): 736}
       ```
     * test_from_IBMdata(min_support=18)  
       ```python
-      >>> test_from_IBMdata(50)
+      >>> Apriori_test_set.test_from_IBMdata(50)
       {('132',): 64, ('553',): 80, ('592',): 58, ('374',): 53, ('432',): 54, ('63',): 53, ('607',): 75, ('442',): 66, ('988',): 55, ('238',): 73, ('471',): 66, ('973',): 63, ('444',): 62, ('902',): 50, ('293',): 55, ('318',): 51, ('87',): 52, ('36',): 66, ('647',): 53, ('405',): 63}      
       ```
     
