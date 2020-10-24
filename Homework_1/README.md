@@ -11,7 +11,7 @@ Use IBM Quest Synthetic Data Generator
 #### Implement Apriori Algorithm and apply on these datasets 
 * Hash? Tree? (optional)  
 * FP-growth  
-##### Compare your results
+#### Compare your results
 
 ---
 ### 環境
@@ -32,45 +32,44 @@ Use IBM Quest Synthetic Data Generator
 * **./result**:  
   存放結果的資料夾
   
-### 測試 API
-* Deal data function:
-  呼叫已整理好的資料集（提供給演算使用）
-    * deal_lecture_data(chose_type=1)  
-      講義中的範例: 
-      ```python
-      >>> deal_lecture_data()   
-      [['a', 'c', 'd'],
-       ['b', 'c', 'e'],
-       ['a', 'b', 'c', 'e'],
-       ['b', 'e']]
-       
-      >>> deal_lecture_data(2)
-      [['11', '33', '44'],
-       ['22', '33', '55'],
-       ['11', '22', '33', '55'],
-       ['22', '55']]                 
-      ```
-    * deal_kaggle_data(filename='./dataset/groceries - groceries.csv')  
-      [from kaggle groceries - groceries](https://www.kaggle.com/irfanasrullah/groceries?select=groceries+-+groceries.csv)
-      ```python
-      >>> deal_kaggle_data()
-      [['citrus fruit', 'semi-finished bread', 'margarine', 'ready soups'], 
-       ['tropical fruit', 'yogurt', 'coffee'], 
-       ['whole milk'],
-       ...] 
-      ``` 
-    * deal_IBM_data(filename='./dataset/test_data.csv')  
-      from IBM Quest Synthetic Data Generator
-        ```python
-      >>> deal_IBM_data()
-      [['118', '266', '364', '427', '628', '673', '868', '904'], 
-       ['40', '316', '594', '858', '870', '871', '917'], 
-       ['0', '132', '169', '209', '314', '439', '482', '553', '592', '642', '885'], 
-       ['73', '128', '188', '319', '374', '432', '456', '511', '705', '707', '756', '767', '825', '894'], 
-       ...]
-        ```
+### 資料集 API
+呼叫已整理好的資料集（提供給演算使用）
+* deal_lecture_data(chose_type=1)  
+  講義中的範例: 
+  ```python
+  >>> deal_lecture_data()   
+  [['a', 'c', 'd'],
+   ['b', 'c', 'e'],
+   ['a', 'b', 'c', 'e'],
+   ['b', 'e']]
+   
+  >>> deal_lecture_data(2)
+  [['11', '33', '44'],
+   ['22', '33', '55'],
+   ['11', '22', '33', '55'],
+   ['22', '55']]                 
+  ```
+* deal_kaggle_data(filename='./dataset/groceries - groceries.csv')  
+  [from kaggle groceries - groceries](https://www.kaggle.com/irfanasrullah/groceries?select=groceries+-+groceries.csv) 共9835筆交易
+  ```python
+  >>> deal_kaggle_data()
+  [['citrus fruit', 'semi-finished bread', 'margarine', 'ready soups'], 
+   ['tropical fruit', 'yogurt', 'coffee'], 
+   ['whole milk'],
+   ...] 
+  ``` 
+* deal_IBM_data(filename='./dataset/test_data.csv')  
+  from IBM Quest Synthetic Data Generator
+    ```python
+  >>> deal_IBM_data()
+  [['118', '266', '364', '427', '628', '673', '868', '904'], 
+   ['40', '316', '594', '858', '870', '871', '917'], 
+   ['0', '132', '169', '209', '314', '439', '482', '553', '592', '642', '885'], 
+   ['73', '128', '188', '319', '374', '432', '456', '511', '705', '707', '756', '767', '825', '894'], 
+   ...]
+    ```
     
- 
+### 測試 API
 * class Apriori_test_set:
     * test_from_lecture(chose_type=1, min_support=2)  
       ```python 
@@ -96,13 +95,13 @@ Use IBM Quest Synthetic Data Generator
     
 ### 演算法 API
 * Apriori
-    * apriori(transactions, min_support)  
+    * **apriori(transactions, min_support)**  
       transactions: [['str', ...], ['str', 'str' ...], ...]  
       min_support: int
       return: {('item', ...): number, ...}
     * 
     
-* FP_Growth
+* FP_Growth  
     *
     *
     
