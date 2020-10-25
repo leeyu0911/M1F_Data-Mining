@@ -230,9 +230,9 @@ P76091420
 
 ## Compare results
 
-先使用講義上的範例對演算法做驗證，確認結果正確．
+先使用講義上的範例對演算法做驗證，確認結果正確。
 
-再分別使用 Apriori 演算法和 FP_Growth 演算法對來自 Kaggle 和 IBM 兩個不同的資料集做測試，並對相同資料集給定相同的參數作不同演算法的時間分析．  
+再分別使用 Apriori 演算法和 FP_Growth 演算法對來自 Kaggle 和 IBM 兩個不同的資料集做測試，並對相同資料集給定相同的參數作不同演算法的時間分析。  
 
 <br/>
 
@@ -264,9 +264,10 @@ P76091420
 
 ```mermaid
 graph LR
-A[dataset] -- Link text --> B((Apriori))
-A --> C(FP_Growth)
-B --> D{answer}
-C --> D
+IBM(IBM dataset) --> Dataclean{Data clean}
+Kaggle(Kaggle dataset) --> Dataclean
+Dataclean --> A((Apriori)) --> result
+Dataclean --> F((FP_Growth)) --> result
 ```
 
+![](result/Snipaste_2020-10-25_17-13-24.jpg)
