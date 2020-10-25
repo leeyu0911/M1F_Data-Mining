@@ -127,7 +127,7 @@ class FP_Growth_test_set:
 
 class Test_time:
     """
-    Only for test time
+    Not only for test time
     """
 
     def __init__(self, transactions=deal_lecture_data(), algo='apriori', **kwargs):
@@ -136,16 +136,16 @@ class Test_time:
         self.min_support = kwargs.get('min_support')
         self.confidence = kwargs.get('confidence')
         t1 = time()
-        self._algo()
+        self.result = self._algo()
         t2 = time()
         print(str(self.algo), str(kwargs), ':', round(t2 - t1, 3), 's')
         self.time = round(t2 - t1, 3)
 
     def _algo(self):
         if self.algo in ['Apriori', 'apriori']:
-            apriori(self.transactions, min_support=self.min_support)
+            return apriori(self.transactions, min_support=self.min_support)
         elif self.algo in ['FP_Growth', 'fp_growth', 'FP_growth', 'fpgrowth']:
-            find_frequent_patterns(self.transactions, min_support=self.min_support)
+            return find_frequent_patterns(self.transactions, min_support=self.min_support)
 
 
 def to_file(content: dict, filename):
@@ -182,8 +182,8 @@ if __name__ == '__main__':
             {'min_support': 600},
             {'min_support': 50}]
     # run and write to file
-    # for i, t in enumerate(task1):
-    #     to_file(t(**arg1[i]), str(task1[i]).split(' ')[1] + add_args_to_filename(arg1[i]) + '.json')
+    for i, t in enumerate(task1):
+        to_file(t(**arg1[i]), str(task1[i]).split(' ')[1] + add_args_to_filename(arg1[i]) + '.json')
 
     # -----FP_Growth test-----
     task2 = [FP_Growth_test_set.test_from_lecture,
@@ -193,11 +193,11 @@ if __name__ == '__main__':
             {'min_support': 50, 'confidence': 0.6},
             {'min_support': 18, 'confidence': 0.6}]
     # run and write to file
-    # for i, t in enumerate(task2):
-    #     to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + add_args_to_filename(arg2[i]) + '.json')
-    #     print(str(task2[i]).split(' ')[1])
-    #     print(t(**arg2[i]))
-    #     print()
+    for i, t in enumerate(task2):
+        to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + add_args_to_filename(arg2[i]) + '.json')
+        print(str(task2[i]).split(' ')[1])
+        print(t(**arg2[i]))
+        print()
 
 
     # -----test time-----
