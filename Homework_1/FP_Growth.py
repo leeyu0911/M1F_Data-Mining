@@ -155,18 +155,16 @@ class FP_Tree:
         for i in range(1, len(items) + 1):
             for subset in itertools.combinations(items, i):
                 pattern = tuple(sorted(list(subset) + suffix_value))
-                patterns[pattern] = \
-                    min([self.frequent_items[x] for x in subset])
+                patterns[pattern] = min([self.frequent_items[x] for x in subset])
 
         return patterns
 
-    def mine_sub_trees(self, threshold):
+    def mine_sub_trees(self, min_support):
         """
         Generate subtrees and mine them for patterns.
         """
         patterns = {}
-        mining_order = sorted(self.frequent_items.keys(),
-                              key=lambda x: self.frequent_items[x])
+        mining_order = sorted(self.frequent_items.keys(), key=lambda x: self.frequent_items[x])
 
         # Get items in tree in reverse order of occurrences.
         for item in mining_order:
@@ -196,8 +194,8 @@ class FP_Tree:
 
             # Now we have the input for a subtree,
             # so construct it and grab the patterns.
-            subtree = FP_Tree(conditional_tree_input, threshold, item, self.frequent_items[item])
-            subtree_patterns = subtree.mine_patterns(threshold)
+            subtree = FP_Tree(conditional_tree_input, min_support, item, self.frequent_items[item])
+            subtree_patterns = subtree.mine_patterns(min_support)
 
             # Insert subtree patterns into main patterns dictionary.
             for pattern in subtree_patterns.keys():
@@ -209,16 +207,16 @@ class FP_Tree:
         return patterns
 
 
-def find_frequent_patterns(transactions, support_threshold):
+def find_frequent_patterns(transactions, min_support):
     """
     Given a set of transactions, find the patterns in it
     over the specified support min_support.
     """
-    tree = FP_Tree(transactions, support_threshold, None, None)
-    return tree.mine_patterns(support_threshold)
+    tree = FP_Tree(transactions, min_support, None, None)
+    return tree.mine_patterns(min_support)
 
 
-def generate_association_rules(patterns, confidence_threshold):
+def generate_association_rules(patterns: dict, confidence_threshold):
     """
     Given a set of frequent itemsets, return a dict
     of association rules in the form
