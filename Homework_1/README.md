@@ -1,6 +1,17 @@
-[TOC]
-
-[link](#homework-1)
+- [Homework 1](#homework-1)
+  * [Association Analysis](#association-analysis)
+    + [Dataset1:](#dataset1-)
+    + [Dataset2:](#dataset2-)
+    + [Implement Apriori Algorithm and apply on these datasets](#implement-apriori-algorithm-and-apply-on-these-datasets)
+    + [Compare your results](#compare-your-results)
+  * [程式檔案](#----)
+  * [API](#api)
+    + [資料集](#---)
+    + [資料測試](#----)
+    + [時間測試](#----)
+    + [演算法](#---)
+    + [存檔](#--)
+  * [Compare results](#compare-results)
 
 ## Homework 1
 
