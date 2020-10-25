@@ -1,5 +1,7 @@
 [TOC]
 
+[link](#homework-1)
+
 ## Homework 1
 
 ### Association Analysis  
@@ -228,7 +230,6 @@ Use IBM Quest Synthetic Data Generator
 | ---------------------------- | ------- | --------- |
 | Kaggle data (min_support=50) |         |           |
 | IBM data (min_support=18)    |         |           |
-|                              |         |           |
 
 
 
