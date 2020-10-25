@@ -1,4 +1,7 @@
+[TOC]
+
 ## Homework 1
+
 ### Association Analysis  
 #### Dataset1:  
 Select from kaggle.com / UCI  
@@ -13,11 +16,7 @@ Use IBM Quest Synthetic Data Generator
 * FP-growth  
 #### Compare your results
 
----
-### 環境
-* macOS: 10.15.7（19H2）
-* python: 3.7
-* pycharm: 2020.2.3
+------
 
 ### 程式檔案
 * **main.py**:  
@@ -40,7 +39,7 @@ Use IBM Quest Synthetic Data Generator
 
 呼叫已整理好的資料集（提供給演算使用）
 * **deal_lecture_data(chose_type=1)**  
-  講義中的範例: 
+  講義中的範例 
   
   ```python
   >>> deal_lecture_data()   
@@ -66,7 +65,7 @@ Use IBM Quest Synthetic Data Generator
    ...] 
   ```
 * **deal_IBM_data(filename='./dataset/test_data.csv')**  
-  from IBM Quest Synthetic Data Generator
+  from IBM Quest Synthetic Data Generator  共997筆交易
   
   ```python
   >>> deal_IBM_data()  
@@ -77,7 +76,7 @@ Use IBM Quest Synthetic Data Generator
     ...]
   ```
   
-#### 測試 
+#### 資料測試 
 * **class Apriori_test_set:**
   
     * **test_from_lecture(chose_type=1, min_support=2)**  
@@ -108,21 +107,39 @@ Use IBM Quest Synthetic Data Generator
       {('a',): (('c',), 1.0), ('c',): (('b', 'e'), 0.6666666666666666), ('b',): (('c', 'e'), 0.6666666666666666), ('e',): (('b', 'c'), 0.6666666666666666), ('b', 'c'): (('e',), 1.0), ('b', 'e'): (('c',), 0.6666666666666666), ('c', 'e'): (('b',), 1.0)}
       ```
     
-    * **test_from_kaggle(min_support=50)**  
+    * **test_from_kaggle(min_support=50, confidence=0.6)**  
     
       ```python
       >>> FP_Growth_test_set.test_from_kaggle()
       {('', 'other vegetables'): (('whole milk',), 0.6530612244897959), ('', 'whole milk'): (('other vegetables',), 0.6736842105263158), ('onions', 'root vegetables'): (('other vegetables',), 0.6021505376344086), ('bottled water', 'butter'): (('whole milk',), 0.6022727272727273), ('butter', 'domestic eggs'): (('whole milk',), 0.6210526315789474), ('domestic eggs', 'margarine'): (('whole milk',), 0.6219512195121951), ('domestic eggs', 'pip fruit'): (('whole milk',), 0.6235294117647059), ('domestic eggs', 'tropical fruit'): (('whole milk',), 0.6071428571428571), ('other vegetables', 'root vegetables', 'whipped/sour cream'): (('whole milk',), 0.6071428571428571), ('fruit/vegetable juice', 'other vegetables', 'yogurt'): (('whole milk',), 0.6172839506172839), ('other vegetables', 'pip fruit', 'root vegetables'): (('whole milk',), 0.675), ('pip fruit', 'root vegetables', 'whole milk'): (('other vegetables',), 0.6136363636363636), ('other vegetables', 'pip fruit', 'yogurt'): (('whole milk',), 0.625), ('citrus fruit', 'root vegetables', 'whole milk'): (('other vegetables',), 0.6333333333333333), ('root vegetables', 'tropical fruit', 'yogurt'): (('whole milk',), 0.7), ('other vegetables', 'tropical fruit', 'yogurt'): (('whole milk',), 0.6198347107438017), ('other vegetables', 'root vegetables', 'yogurt'): (('whole milk',), 0.6062992125984252)}
       ```
     
-    * **test_from_IBMdata(min_support=18)**  
+    * **test_from_IBMdata(min_support=18, confidence=0.6)**  
     
       ```python
       >>> FP_Growth_test_set.test_from_IBMdata()
       {('34',): (('87',), 1.0), ('493', '650'): (('187',), 1.0), ('493', '656'): (('132',), 0.9473684210526315), ('650', '656'): (('187', '493'), 1.0), ('187', '650'): (('493',), 1.0), ('187', '656'): (('493',), 0.9047619047619048), ('187', '493'): (('656',), 0.95), ('187', '493', '650'): (('132',), 0.9473684210526315), ('187', '493', '656'): (('132',), 0.9473684210526315), ('187', '650', '656'): (('493',), 1.0), ('493', '650', '656'): (('187',), 1.0), ('132', '493'): (('656',), 0.8571428571428571), ('132', '650'): (('187', '493'), 1.0), ('132', '187'): (('493', '656'), 0.9473684210526315), ('132', '187', '493'): (('656',), 0.9473684210526315), ('132', '187', '650'): (('493',), 1.0), ('132', '493', '650'): (('187',), 1.0), ('557',): (('405',), 0.95), ('427',): (('118',), 0.9047619047619048), ('187', '626'): (('493',), 1.0), ('493', '626'): (('132',), 0.9), ('132', '656'): (('493',), 1.0), ('132', '187', '656'): (('493',), 1.0), ('132', '493', '656'): (('187',), 1.0), ('132', '626'): (('493',), 0.9473684210526315)}
       ```
     
-      
+
+
+
+#### 時間測試
+
+* class Test_time:
+
+  Test_time(transation, algo, min_support)
+
+  ```python
+  transactions = deal_kaggle_data()
+  >>> Test_time(transactions, 'apriori', 500)
+  0.002 s
+  >>> Test_time(transactions, 'FP_Growth', 500)
+  0.001 s
+  ```
+
+  
+
 #### 演算法 
 
 * **Apriori**
@@ -194,7 +211,32 @@ Use IBM Quest Synthetic Data Generator
 
 先使用講義上的範例對演算法做驗證，確認結果正確．
 
-再分別使用 Apriori 演算法和 FP_Growth 演算法對來自 Kaggle 和 IBM 兩個不同的資料集做測試，並對相同資料集給定相同的參數作時間分析．
+再分別使用 Apriori 演算法和 FP_Growth 演算法對來自 Kaggle 和 IBM 兩個不同的資料集做測試，並對相同資料集給定相同的參數作不同演算法的時間分析．
+
+
+
+* 測試環境
+  * MacBook Pro (13-inch, 2016, Four Thunderbolt 3 Ports)
+  * RAM: 8G
+  * macOS: 10.15.7（19H2）
+  * python: 3.7
+  * pycharm: 2020.2.3
+
+* 每個結果 run 10 次後取平均秒數（取到小數點以下三位）
+
+|                              | Apriori | FP_Growth |
+| ---------------------------- | ------- | --------- |
+| Kaggle data (min_support=50) |         |           |
+| IBM data (min_support=18)    |         |           |
+|                              |         |           |
+
+
+
+
+
+~~覺得不會用到class，是你不會用class．~~
+
+寫過最多class的一次～
 
 
 
