@@ -153,24 +153,22 @@ Use IBM Quest Synthetic Data Generator
     
 * **FP_Growth**  
 
-    * **find_frequent_patterns(transactions, min_support)**
+    * **find_frequent_patterns(transactions, min_support)**  
     
-  * transactions: [['str', ...], ['str', 'str' ...], ...]  
+      * transactions: [['str', ...], ['str', 'str' ...], ...]  
       * min_support: int
       * return: {('item', ...): number, ...}
     
       ```python
-      >>> transactions = [['a', 'c', 'd'],
-       										['b', 'c', 'e'],
-       										['a', 'b', 'c', 'e'],
-       										['b', 'e']]
+      >>> transactions = [['a', 'c', 'd'], 
+                          ['b', 'c', 'e'], 
+                          ['a', 'b', 'c', 'e'], 
+                          ['b', 'e']]
       >>> find_frequent_patterns(transactions, 2)
       {('a',): 2, ('c',): 3, ('b',): 3, ('e',): 3, ('a', 'c'): 2, ('b', 'c'): 2, ('b', 'e'): 3, ('c', 'e'): 2, ('b', 'c', 'e'): 2}
       ```
     
-      
-    
-    * **generate_association_rules(patterns, confidence_threshold)**
+    * **generate_association_rules(patterns, confidence_threshold)**  
     
       * patterns: {('item', ...): number, ...}
       * confidence_threshold: float (right/left)
@@ -184,9 +182,6 @@ Use IBM Quest Synthetic Data Generator
     
       
     
-
-
-
 #### 存檔 
 
 * **to_file(content: dict, filename)**
