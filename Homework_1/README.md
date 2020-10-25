@@ -41,10 +41,14 @@ Use IBM Quest Synthetic Data Generator
   
 
   
-### 資料集 API
+### API
+
+#### 資料集
+
 呼叫已整理好的資料集（提供給演算使用）
-* deal_lecture_data(chose_type=1)  
+* **deal_lecture_data(chose_type=1)**  
   講義中的範例: 
+  
   ```python
   >>> deal_lecture_data()   
   [['a', 'c', 'd'],
@@ -58,7 +62,7 @@ Use IBM Quest Synthetic Data Generator
    ['11', '22', '33', '55'],
    ['22', '55']]                 
   ```
-* deal_kaggle_data(filename='./dataset/groceries - groceries.csv')  
+* **deal_kaggle_data(filename='./dataset/groceries - groceries.csv')**  
   [from kaggle groceries - groceries](https://www.kaggle.com/irfanasrullah/groceries?select=groceries+-+groceries.csv)  共9835筆交易
   
   ```python
@@ -68,8 +72,9 @@ Use IBM Quest Synthetic Data Generator
    ['whole milk'],
    ...] 
   ```
-* deal_IBM_data(filename='./dataset/test_data.csv')  
+* **deal_IBM_data(filename='./dataset/test_data.csv')**  
   from IBM Quest Synthetic Data Generator
+  
     ```python
   >>> deal_IBM_data()
   [['118', '266', '364', '427', '628', '673', '868', '904'], 
@@ -79,44 +84,45 @@ Use IBM Quest Synthetic Data Generator
    ...]
     ```
   
-### 測試 API
-* class Apriori_test_set:
-    * test_from_lecture(chose_type=1, min_support=2)  
+#### 測試 
+* **class Apriori_test_set:**
+    
+    * **test_from_lecture(chose_type=1, min_support=2)**  
+      
       ```python 
       >>> Apriori_test_set.test_from_lecture(min_support=2)
       {('a',): 2, ('c',): 3, ('b',): 3, ('e',): 3, ('a', 'c'): 2, ('b', 'c'): 2, ('b', 'e'): 3, ('c', 'e'): 2, ('b', 'c', 'e'): 2}
       ```
-    * test_from_kaggle(min_support=50)  
+    * **test_from_kaggle(min_support=50)**  
+      
       ```python
       >>> Apriori_test_set.test_from_kaggle(600)
       {('citrus fruit',): 814, ('tropical fruit',): 1032, ('yogurt',): 1372, ('whole milk',): 2513, ('pip fruit',): 744, ('other vegetables',): 1903, ('rolls/buns',): 1809, ('bottled beer',): 792, ('bottled water',): 1087, ('soda',): 1715, ('fruit/vegetable juice',): 711, ('newspapers',): 785, ('pastry',): 875, ('root vegetables',): 1072, ('canned beer',): 764, ('sausage',): 924, ('brown bread',): 638, ('shopping bags',): 969, ('whipped/sour cream',): 705, ('domestic eggs',): 624, ('other vegetables', 'whole milk'): 736}
       ```
-    * test_from_IBMdata(min_support=18)  
+    * **test_from_IBMdata(min_support=18)**  
+      
       ```python
       >>> Apriori_test_set.test_from_IBMdata(50)
       {('132',): 64, ('553',): 80, ('592',): 58, ('374',): 53, ('432',): 54, ('63',): 53, ('607',): 75, ('442',): 66, ('988',): 55, ('238',): 73, ('471',): 66, ('973',): 63, ('444',): 62, ('902',): 50, ('293',): 55, ('318',): 51, ('87',): 52, ('36',): 66, ('647',): 53, ('405',): 63}      
       ```
     
-* class FP_Growth_test_set:
-    * test_from_lecture(chose_type=1, min_support=2, confidence=0.6)
+* **class FP_Growth_test_set:**  
     
-      ```python
+    * **test_from_lecture(chose_type=1, min_support=2, confidence=0.6)**  
+    
+      ```python  
       >>> FP_Growth_test_set.test_from_lecture()
       {('a',): (('c',), 1.0), ('c',): (('b', 'e'), 0.6666666666666666), ('b',): (('c', 'e'), 0.6666666666666666), ('e',): (('b', 'c'), 0.6666666666666666), ('b', 'c'): (('e',), 1.0), ('b', 'e'): (('c',), 0.6666666666666666), ('c', 'e'): (('b',), 1.0)}
       ```
     
-      
-    
-    * test_from_kaggle(min_support=50)  
+    * **test_from_kaggle(min_support=50)**  
     
       ```python
       >>> FP_Growth_test_set.test_from_kaggle()
       {('', 'other vegetables'): (('whole milk',), 0.6530612244897959), ('', 'whole milk'): (('other vegetables',), 0.6736842105263158), ('onions', 'root vegetables'): (('other vegetables',), 0.6021505376344086), ('bottled water', 'butter'): (('whole milk',), 0.6022727272727273), ('butter', 'domestic eggs'): (('whole milk',), 0.6210526315789474), ('domestic eggs', 'margarine'): (('whole milk',), 0.6219512195121951), ('domestic eggs', 'pip fruit'): (('whole milk',), 0.6235294117647059), ('domestic eggs', 'tropical fruit'): (('whole milk',), 0.6071428571428571), ('other vegetables', 'root vegetables', 'whipped/sour cream'): (('whole milk',), 0.6071428571428571), ('fruit/vegetable juice', 'other vegetables', 'yogurt'): (('whole milk',), 0.6172839506172839), ('other vegetables', 'pip fruit', 'root vegetables'): (('whole milk',), 0.675), ('pip fruit', 'root vegetables', 'whole milk'): (('other vegetables',), 0.6136363636363636), ('other vegetables', 'pip fruit', 'yogurt'): (('whole milk',), 0.625), ('citrus fruit', 'root vegetables', 'whole milk'): (('other vegetables',), 0.6333333333333333), ('root vegetables', 'tropical fruit', 'yogurt'): (('whole milk',), 0.7), ('other vegetables', 'tropical fruit', 'yogurt'): (('whole milk',), 0.6198347107438017), ('other vegetables', 'root vegetables', 'yogurt'): (('whole milk',), 0.6062992125984252)}
       ```
     
-      
-    
-    * test_from_IBMdata(min_support=18)  
+    * **test_from_IBMdata(min_support=18)**  
     
       ```python
       >>> FP_Growth_test_set.test_from_IBMdata()
@@ -125,21 +131,74 @@ Use IBM Quest Synthetic Data Generator
     
       
     
-### 演算法 API
-* Apriori
+#### 演算法 
+* **Apriori**
+    
     * **apriori(transactions, min_support)**  
-      transactions: [['str', ...], ['str', 'str' ...], ...]  
-      min_support: int
-      return: {('item', ...): number, ...}
-    * 
+      
+      * transactions: [['str', ...], ['str', 'str' ...], ...]  
+      * min_support: int
+      * return: {('item', ...): number, ...}
+      
+      ```python
+      >>> transactions = [['a', 'c', 'd'],
+       										['b', 'c', 'e'],
+       										['a', 'b', 'c', 'e'],
+       										['b', 'e']]
+      >>> apriori(transactions, 2)
+      {('a',): 2, ('c',): 3, ('b',): 3, ('e',): 3, ('a', 'c'): 2, ('b', 'c'): 2, ('b', 'e'): 3, ('c', 'e'): 2, ('b', 'c', 'e'): 2}
+      ```
+      
+      
     
-* FP_Growth  
+* **FP_Growth**  
 
-    * find_frequent_patterns(transactions, support_threshold)
-    * generate_association_rules(patterns, confidence_threshold)
-
+    * **find_frequent_patterns(transactions, min_support)**
     
+  * transactions: [['str', ...], ['str', 'str' ...], ...]  
+      * min_support: int
+      * return: {('item', ...): number, ...}
+    
+      ```python
+      >>> transactions = [['a', 'c', 'd'],
+       										['b', 'c', 'e'],
+       										['a', 'b', 'c', 'e'],
+       										['b', 'e']]
+      >>> find_frequent_patterns(transactions, 2)
+      {('a',): 2, ('c',): 3, ('b',): 3, ('e',): 3, ('a', 'c'): 2, ('b', 'c'): 2, ('b', 'e'): 3, ('c', 'e'): 2, ('b', 'c', 'e'): 2}
+      ```
+    
+      
+    
+    * **generate_association_rules(patterns, confidence_threshold)**
+    
+      * patterns: {('item', ...): number, ...}
+      * confidence_threshold: float (right/left)
+      * return: {(left): ((right), confidence)}
+    
+      ```python 
+      >>> patterns = find_frequent_patterns(transactions, 2)
+      >>> generate_association_rules(patterns, 0.6)
+      {('a',): (('c',), 1.0), ('c',): (('b', 'e'), 0.6666666666666666), ('b',): (('c', 'e'), 0.6666666666666666), ('e',): (('b', 'c'), 0.6666666666666666), ('b', 'c'): (('e',), 1.0), ('b', 'e'): (('c',), 0.6666666666666666), ('c', 'e'): (('b',), 1.0)}
+      ```
+    
+      
+    
+
+
+
+#### 存檔 
+
+* **to_file(content: dict, filename)**
+
+  將字典變數寫入指定文件名稱，存入./result
+
+  * content: dict
+  * filename: 可指定副檔名.json格式
+
 ### Compare results
+
+
 
 
 ```mermaid
