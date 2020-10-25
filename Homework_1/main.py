@@ -5,6 +5,7 @@ pycharm: 2020.2.3
 """
 from Homework_1.FP_Growth import *
 from Homework_1.apriori_algorithm import *
+from time import time
 
 
 def deal_lecture_data(chose_type=1):
@@ -123,6 +124,28 @@ class FP_Growth_test_set:
         return generate_association_rules(p, confidence)
 
 
+class Test_time:
+    """
+    Only for test time
+    """
+
+    def __init__(self, transactions=deal_lecture_data(), algo='apriori', **kwargs):
+        self.transactions = transactions
+        self.algo = algo
+        self.min_support = kwargs.get('min_support')
+        self.confidence = kwargs.get('confidence')
+        t1 = time()
+        self._algo()
+        t2 = time()
+        print(str(algo), str(kwargs), ':', round(t2 - t1, 3), 's')
+
+    def _algo(self):
+        if self.algo in ['Apriori', 'apriori']:
+            apriori(self.transactions, min_support=self.min_support)
+        elif self.algo in ['FP_Growth', 'fp_growth', 'FP_growth', 'fpgrowth']:
+            find_frequent_patterns(self.transactions, min_support=self.min_support)
+
+
 def to_file(content: dict, filename):
     # content = list(content.items())
     f = open('./result/' + filename, 'w+')
@@ -149,24 +172,36 @@ def add_args_to_filename(arg) -> str:
 
 if __name__ == '__main__':
 
-    # Apriori test
-    task1 = [Apriori_test_set.test_from_lecture, Apriori_test_set.test_from_kaggle,
+    # -----Apriori test------
+    task1 = [Apriori_test_set.test_from_lecture,
+             Apriori_test_set.test_from_kaggle,
              Apriori_test_set.test_from_IBMdata]
     arg1 = [{'chose_type': 1, 'min_support': 3},
             {'min_support': 600},
             {'min_support': 50}]
-    # print(str(task1[0]).split(' '))  # ['<function', 'Apriori_test_set.test_from_lecture', 'at', '0x7fa8f2d62d40>']
-    for i, t in enumerate(task1):
-        to_file(t(**arg1[i]), str(task1[i]).split(' ')[1] + add_args_to_filename(arg1[i]) + '.json')
+    # run and write to file
+    # for i, t in enumerate(task1):
+    #     to_file(t(**arg1[i]), str(task1[i]).split(' ')[1] + add_args_to_filename(arg1[i]) + '.json')
 
-    # FP_Growth test
-    task2 = [FP_Growth_test_set.test_from_lecture, FP_Growth_test_set.test_from_kaggle,
+    # -----FP_Growth test-----
+    task2 = [FP_Growth_test_set.test_from_lecture,
+             FP_Growth_test_set.test_from_kaggle,
              FP_Growth_test_set.test_from_IBMdata]
     arg2 = [{'chose_type': 1, 'min_support': 2, 'confidence': 0.6},
             {'min_support': 50, 'confidence': 0.6},
             {'min_support': 18, 'confidence': 0.6}]
-    for i, t in enumerate(task2):
-        to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + add_args_to_filename(arg2[i]) + '.json')
-        # print(str(task2[i]).split(' ')[1])
-        # print(t(**arg2[i]))
-        # print()
+    # run and write to file
+    # for i, t in enumerate(task2):
+    #     to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + add_args_to_filename(arg2[i]) + '.json')
+    #     print(str(task2[i]).split(' ')[1])
+    #     print(t(**arg2[i]))
+    #     print()
+
+
+    # -----test time-----
+    for i in range(10):
+        Test_time(deal_kaggle_data(), 'apriori', min_support=50)
+        Test_time(deal_kaggle_data(), 'FP_growth', min_support=50)
+
+        Test_time(deal_IBM_data(), 'apriori', min_support=18)
+        Test_time(deal_IBM_data(), 'FP_growth', min_support=18)
