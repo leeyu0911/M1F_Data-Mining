@@ -10,13 +10,13 @@ from Homework_1.apriori_algorithm import *
 def deal_lecture_data(chose_type=1):
     """ result:
     str:
-    {'a': 2, 'c': 3, 'b': 3, 'e': 3,
+    {('a',): 2, ('c',): 3, ('b',): 3, ('e',): 3,
      ('a', 'c'): 2, ('b', 'c'): 2, ('b', 'e'): 3, ('c', 'e'): 2,
      ('b', 'c', 'e'): 2}
 
     int:
-    {'11': 2, '33': 3, '22': 3, '55': 3,
-     ('11', '33'): 2, ('22', '33'): 2, ('22', '55'): 3, ('33', '55'): 2,
+    {('11',): 2, ('33',): 3, ('22',): 3,
+     ('55',): 3, ('11', '33'): 2, ('22', '33'): 2, ('22', '55'): 3, ('33', '55'): 2,
      ('22', '33', '55'): 2}
     """
     if chose_type == 1:
@@ -133,14 +133,31 @@ def to_file(content: dict, filename):
     f.close()
 
 
+def add_args_to_filename(arg) -> str:
+    s = ''
+    order = ['chose_type', 'min_support', 'confidence']
+
+    if type(arg) == dict:
+        for key in order:
+            if arg.get(key) is not None:
+                s += '_' + str(key) + '_' + str(arg[key])
+    else:
+        s += '_' + str(arg)
+
+    return s
+
+
 if __name__ == '__main__':
+
     # Apriori test
     task1 = [Apriori_test_set.test_from_lecture, Apriori_test_set.test_from_kaggle,
              Apriori_test_set.test_from_IBMdata]
-    arg1 = [2, 600, 50]
+    arg1 = [{'chose_type': 1, 'min_support': 3},
+            {'min_support': 600},
+            {'min_support': 50}]
     # print(str(task1[0]).split(' '))  # ['<function', 'Apriori_test_set.test_from_lecture', 'at', '0x7fa8f2d62d40>']
-    # for i, t in enumerate(task1):
-    #     to_file(t(arg[i]), str(task1[i]).split(' ')[1] + '.json')
+    for i, t in enumerate(task1):
+        to_file(t(**arg1[i]), str(task1[i]).split(' ')[1] + add_args_to_filename(arg1[i]) + '.json')
 
     # FP_Growth test
     task2 = [FP_Growth_test_set.test_from_lecture, FP_Growth_test_set.test_from_kaggle,
@@ -149,7 +166,7 @@ if __name__ == '__main__':
             {'min_support': 50, 'confidence': 0.6},
             {'min_support': 18, 'confidence': 0.6}]
     for i, t in enumerate(task2):
-        to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + '.json')
-        print(str(task2[i]).split(' ')[1])
-        print(t(**arg2[i]))
-        print()
+        to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + add_args_to_filename(arg2[i]) + '.json')
+        # print(str(task2[i]).split(' ')[1])
+        # print(t(**arg2[i]))
+        # print()
