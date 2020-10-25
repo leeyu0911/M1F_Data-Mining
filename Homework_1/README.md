@@ -224,9 +224,9 @@ Use IBM Quest Synthetic Data Generator
 
 先使用講義上的範例對演算法做驗證，確認結果正確．
 
-再分別使用 Apriori 演算法和 FP_Growth 演算法對來自 Kaggle 和 IBM 兩個不同的資料集做測試，並對相同資料集給定相同的參數作不同演算法的時間分析．
+再分別使用 Apriori 演算法和 FP_Growth 演算法對來自 Kaggle 和 IBM 兩個不同的資料集做測試，並對相同資料集給定相同的參數作不同演算法的時間分析．  
 
-
+  
 
 * 測試環境
   * MacBook Pro (13-inch, 2016, Four Thunderbolt 3 Ports)
@@ -242,9 +242,11 @@ Use IBM Quest Synthetic Data Generator
 | Kaggle data (min_support=50) |         |           |
 | IBM data (min_support=18)    |         |           |
 
+  
 
+  
 
-
+  
 
 ~~覺得不會用到class，是你不會用class．~~
 
