@@ -26,20 +26,13 @@ Use IBM Quest Synthetic Data Generator
   Apriori algorithm
 * **FP_Growth.py**:  
   FP_Growth algorithm
-  
 * **比較data資料.ipynb**:  
   快速測試資料正確性的檔案
-
-
-
-
-
 * **./dataset**:  
   存放測試資料集的資料夾
 * **./result**:  
   存放結果的資料夾
   
-
   
 ### API
 
@@ -130,7 +123,6 @@ Use IBM Quest Synthetic Data Generator
       ```
     
       
-    
 #### 演算法 
 * **Apriori**
     
@@ -142,14 +134,12 @@ Use IBM Quest Synthetic Data Generator
       
       ```python
       >>> transactions = [['a', 'c', 'd'],
-       										['b', 'c', 'e'],
-       										['a', 'b', 'c', 'e'],
-       										['b', 'e']]
+                          ['b', 'c', 'e'],
+                          ['a', 'b', 'c', 'e'],
+                          ['b', 'e']]
       >>> apriori(transactions, 2)
       {('a',): 2, ('c',): 3, ('b',): 3, ('e',): 3, ('a', 'c'): 2, ('b', 'c'): 2, ('b', 'e'): 3, ('c', 'e'): 2, ('b', 'c', 'e'): 2}
       ```
-      
-      
     
 * **FP_Growth**  
 
