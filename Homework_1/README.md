@@ -154,9 +154,9 @@ P76091420
   ```python
   transactions = deal_kaggle_data()
   >>> Test_time(transactions, 'apriori', 500)
-  0.002 s
+  6.449 s
   >>> Test_time(transactions, 'FP_Growth', 500)
-  0.001 s
+  0.284 s
   ```
 
   <br/>
@@ -243,12 +243,25 @@ P76091420
   * python: 3.7
   * pycharm: 2020.2.3
 
-* 每個結果 run 10 次後取平均秒數（取到小數點以下三位）
+* Kaggle data (每個結果 run 10 次後取平均秒數，取到小數點以下三位)
 
-|                              |    Apriori | FP_Growth |
-| ---------------------------- | ---------: | --------: |
-| Kaggle data (min_support=50) | 2777.422 s |           |
-| IBM data (min_support=18)    |            |           |
+| min_support |    Apriori | FP_Growth | Apriori : FP_Growth |
+| ----------- | ---------: | --------: | ------------------: |
+| 50          | 2777.422 s |   70.68 s |              39.296 |
+| 500         |    6.182 s |   0.292 s |              21.302 |
+
+可以看到當 min_support=500 時，Apriori 的時間大約是 FP_Growth 的 21 倍，但當 min_support=50 時，Apriori 的時間卻是 FP_Growth 的將近 40 倍，可見當產生的資料數量越大時，FP_Growth 優勢越高。
+
+<br/>
+
+* IBM data  (每個結果 run 10 次後取平均秒數，取到小數點以下三位)
+
+| min_support |  Apriori | FP_Growth | Apriori : FP_Growth |
+| ----------- | -------: | --------: | ------------------: |
+| 18          | 63.792 s |   0.046 s |            1385.783 |
+| 180         |  0.006 s |   0.003 s |                   2 |
+
+
 
 <br/><br/><br/><br/>
 
@@ -270,4 +283,9 @@ Dataclean --> A((Apriori)) --> result
 Dataclean --> F((FP_Growth)) --> result
 ```
 
-![](result/Snipaste_2020-10-25_17-13-24.jpg)
+![](result/Snipaste_2020-10-25_17-58-39.jpg)
+
+
+
+
+
