@@ -79,7 +79,7 @@ Use IBM Quest Synthetic Data Generator
   
 #### 測試 
 * **class Apriori_test_set:**
-    
+  
     * **test_from_lecture(chose_type=1, min_support=2)**  
       
       ```python 
@@ -100,7 +100,7 @@ Use IBM Quest Synthetic Data Generator
       ```
     
 * **class FP_Growth_test_set:**  
-    
+  
     * **test_from_lecture(chose_type=1, min_support=2, confidence=0.6)**  
     
       ```python  
@@ -124,7 +124,12 @@ Use IBM Quest Synthetic Data Generator
     
       
 #### 演算法 
+
 * **Apriori**
+  
+    ```python
+    >>> from apriori_algorithm import *
+    ```
     
     * **apriori(transactions, min_support)**  
       
@@ -143,6 +148,10 @@ Use IBM Quest Synthetic Data Generator
     
 * **FP_Growth**  
 
+    ```python
+    >>> from FP_Growth import *
+    ```
+    
     * **find_frequent_patterns(transactions, min_support)**  
     
       * transactions: [['str', ...], ['str', 'str' ...], ...]  
@@ -182,6 +191,11 @@ Use IBM Quest Synthetic Data Generator
   * filename: 可指定副檔名.json格式
 
 ### Compare results
+
+先使用講義上的範例對演算法做驗證，確認結果正確．
+
+再分別使用 Apriori 演算法和 FP_Growth 演算法對來自 Kaggle 和 IBM 兩個不同的資料集做測試，並對相同資料集給定相同的參數作時間分析．
+
 
 
 
