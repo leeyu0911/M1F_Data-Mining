@@ -14,7 +14,7 @@
     + [存檔](#存檔)
   * [Compare results](#compare-results)
 
-## Homework 1
+## Homework 1  
 
 ## Association Analysis  
 ### Dataset1:  
@@ -34,7 +34,9 @@ Use IBM Quest Synthetic Data Generator
 
 <br/>
 
-## 程式檔案
+P76091420
+
+## 程式檔案 
 
 * **main.py**:  
   主程式，放測試集的地方
