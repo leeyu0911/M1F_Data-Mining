@@ -6,6 +6,7 @@ pycharm: 2020.2.3
 from Homework_1.FP_Growth import *
 from Homework_1.apriori_algorithm import *
 from time import time
+import matplotlib.pyplot as plt
 
 
 def deal_lecture_data(chose_type=1):
@@ -137,7 +138,8 @@ class Test_time:
         t1 = time()
         self._algo()
         t2 = time()
-        print(str(algo), str(kwargs), ':', round(t2 - t1, 3), 's')
+        print(str(self.algo), str(kwargs), ':', round(t2 - t1, 3), 's')
+        self.time = round(t2 - t1, 3)
 
     def _algo(self):
         if self.algo in ['Apriori', 'apriori']:
@@ -199,9 +201,18 @@ if __name__ == '__main__':
 
 
     # -----test time-----
+    k1 = []
+    k2 = []
+    print('Kaggle:')
     for i in range(10):
-        Test_time(deal_kaggle_data(), 'apriori', min_support=50)
-        Test_time(deal_kaggle_data(), 'FP_growth', min_support=50)
+        k1.append(Test_time(deal_kaggle_data(), 'apriori', min_support=50).time)
+        k2.append(Test_time(deal_kaggle_data(), 'FP_growth', min_support=50).time)
 
-        Test_time(deal_IBM_data(), 'apriori', min_support=18)
-        Test_time(deal_IBM_data(), 'FP_growth', min_support=18)
+    print()
+
+    i1 = []
+    i2 = []
+    print('IBM:')
+    for i in range(10):
+        i1.append(Test_time(deal_IBM_data(), 'apriori', min_support=18).time)
+        i2.append(Test_time(deal_IBM_data(), 'FP_growth', min_support=18).time)
