@@ -68,14 +68,14 @@ Use IBM Quest Synthetic Data Generator
 * **deal_IBM_data(filename='./dataset/test_data.csv')**  
   from IBM Quest Synthetic Data Generator
   
-    ```python
-  >>> deal_IBM_data()
+  ```python
+  >>> deal_IBM_data()  
   [['118', '266', '364', '427', '628', '673', '868', '904'], 
    ['40', '316', '594', '858', '870', '871', '917'], 
    ['0', '132', '169', '209', '314', '439', '482', '553', '592', '642', '885'], 
    ['73', '128', '188', '319', '374', '432', '456', '511', '705', '707', '756', '767', '825', '894'], 
-   ...]
-    ```
+    ...]
+  ```
   
 #### 測試 
 * **class Apriori_test_set:**
