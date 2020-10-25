@@ -1,4 +1,5 @@
-- [Homework 1](#homework-1)
+- # [Homework 1](#homework-1)
+  
   * [Association Analysis](#association-analysis)
     + [Dataset1:](#dataset1-)
     + [Dataset2:](#dataset2-)
@@ -15,25 +16,25 @@
 
 ## Homework 1
 
-### Association Analysis  
-#### Dataset1:  
+## Association Analysis  
+### Dataset1:  
 Select from kaggle.com / UCI  
 
-#### Dataset2:  
+### Dataset2:  
 Use IBM Quest Synthetic Data Generator
 * https://sourceforge.net/projects/ibmquestdatagen/  
 * Generate different datasets  
 
-#### Implement Apriori Algorithm and apply on these datasets 
+### Implement Apriori Algorithm and apply on these datasets 
 * Hash? Tree? (optional)  
 * FP-growth  
-#### Compare your results
+### Compare your results
 
 ------
 
 <br/>
 
-### 程式檔案
+## 程式檔案
 
 * **main.py**:  
   主程式，放測試集的地方
@@ -49,9 +50,9 @@ Use IBM Quest Synthetic Data Generator
   存放結果的資料夾
   
   <br/>
-### API
+## API
 
-#### 資料集
+### 資料集
 
 呼叫已整理好的資料集（提供給演算使用）
 * **deal_lecture_data(chose_type=1)**  
@@ -94,7 +95,7 @@ Use IBM Quest Synthetic Data Generator
   
   <br/>
 
-#### 資料測試 
+### 資料測試 
 
 * **class Apriori_test_set:**
   
@@ -142,7 +143,7 @@ Use IBM Quest Synthetic Data Generator
     
       <br/>
 
-#### 時間測試
+### 時間測試
 
 * class Test_time:
 
@@ -158,7 +159,7 @@ Use IBM Quest Synthetic Data Generator
 
   <br/>
 
-#### 演算法 
+### 演算法 
 
 * **Apriori**
   
@@ -216,7 +217,7 @@ Use IBM Quest Synthetic Data Generator
     
       <br/>
     
-#### 存檔 
+### 存檔 
 
 * **to_file(content: dict, filename)**
 
@@ -225,7 +226,7 @@ Use IBM Quest Synthetic Data Generator
   * content: dict
   * filename: 可指定副檔名.json格式
 
-### Compare results
+## Compare results
 
 先使用講義上的範例對演算法做驗證，確認結果正確．
 
