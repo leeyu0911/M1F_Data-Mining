@@ -245,10 +245,10 @@ P76091420
 
 * 每個結果 run 10 次後取平均秒數（取到小數點以下三位）
 
-|                              | Apriori | FP_Growth |
-| ---------------------------- | ------- | --------- |
-| Kaggle data (min_support=50) |         |           |
-| IBM data (min_support=18)    |         |           |
+|                              |    Apriori | FP_Growth |
+| ---------------------------- | ---------: | --------: |
+| Kaggle data (min_support=50) | 2777.422 s |           |
+| IBM data (min_support=18)    |            |           |
 
 <br/><br/><br/><br/>
 
@@ -256,14 +256,17 @@ P76091420
 
 寫過最多class的一次～
 
+上課聽起來以為很簡單，結果還是寫了兩個禮拜，最後 FP_Growth 產生結果的方式還是不是很懂，算是有抄網路上的 open source
 
+其他說明文件沒提及的細節，或許在程式碼的註解中可以找到
 
-
+希望未來有機會可以接觸到更深物件導向的觀念～
 
 ```mermaid
 graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
+A[dataset] -- Link text --> B((Apriori))
+A --> C(FP_Growth)
+B --> D{answer}
 C --> D
 ```
+
