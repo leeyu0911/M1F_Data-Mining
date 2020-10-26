@@ -1,7 +1,6 @@
 .idea
 reference
 __pycache__
-.ipynb_checkpoints
-Homework_1/.ipynb_checkpoints
+
 
 .DS_Store
