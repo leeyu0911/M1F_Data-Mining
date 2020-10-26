@@ -127,6 +127,7 @@ class FP_Growth_test_set:
 class Test_time:
     """
     Not only for test time
+    add return result
     """
 
     def __init__(self, transactions=deal_lecture_data(), algo='apriori', **kwargs):
