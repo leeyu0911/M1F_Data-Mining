@@ -153,9 +153,9 @@ P76091420
 
   ```python
   transactions = deal_kaggle_data()
-  >>> Test_time(transactions, 'apriori', 500)
+  >>> Test_time(transactions, 'apriori', 500).time
   6.449 s
-  >>> Test_time(transactions, 'FP_Growth', 500)
+  >>> Test_time(transactions, 'FP_Growth', 500).time
   0.284 s
   ```
 
