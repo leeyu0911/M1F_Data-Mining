@@ -240,17 +240,18 @@ P76091420
   * MacBook Pro (13-inch, 2016, Four Thunderbolt 3 Ports)
   * RAM: 8G
   * macOS: 10.15.7（19H2）
-  * python: 3.7
+  * python: 3.7.6
   * pycharm: 2020.2.3
+  * PyDev console: using IPython 7.12.0
 
 * Kaggle data (每個結果 run 10 次後取平均秒數，取到小數點以下三位)
 
 | min_support |    Apriori | FP_Growth | Apriori : FP_Growth |
 | ----------- | ---------: | --------: | ------------------: |
-| 50          | 2777.422 s |   70.68 s |              39.296 |
+| 50          | 2427.371 s |  1.1336 s |            2141.294 |
 | 500         |    6.182 s |   0.292 s |              21.302 |
 
-可以看到當 min_support=500 時，Apriori 的時間大約是 FP_Growth 的 21 倍，但當 min_support=50 時，Apriori 的時間卻是 FP_Growth 的將近 40 倍，可見當產生的資料數量越大時，FP_Growth 優勢越高。
+可以看到當 min_support=500 時，Apriori 的時間大約是 FP_Growth 的 21 倍，但當 min_support=50 時，Apriori 的時間卻是 FP_Growth 的兩千多倍，可見當產生的資料數量越大時，FP_Growth 優勢越高。
 
 <br/>
 
@@ -261,9 +262,13 @@ P76091420
 | 18          | 63.792 s |   0.046 s |            1385.783 |
 | 180         |  0.006 s |   0.003 s |                   2 |
 
+在 Apriori 中產生的 candidate 數量很小時，兩者演算法之間的差距幾乎感覺不出來，但 C1 一旦達到千筆以上，兩者的差距就非常的明顯，FP_Growth 都是在一秒以內完成，但 Apriori 卻要花上一分多鐘。
 
+<br/>
 
-<br/><br/><br/><br/>
+在使用 Apriori 測試 Kaggle 資料時一度懷疑程式跑到當掉，因此加入 tqdm 的套件在 C2 以後的迴圈中做可視化的呈現，發現只要 C1 產生的 candidate 數量級達到千以上，基本上所花的時間都是必須等待的，尤其上面這個例子，甚至跑到四十幾分鐘，基本上就是放著電腦讓他跑完。在剛開始測試的時候 min_support 設太低，甚至有出現跑一整晚的情況，這些例子因為太極端，因此就沒有特別放上來。不過也是可以觀察到 Apriori 和 FP_Growth 在資料集越大，FP_Growth 的優勢體現得越明顯。
+
+<br/><br/><br/><br/><br/>
 
 ~~覺得不會用到class，是你不會用class．~~
 
@@ -272,8 +277,6 @@ P76091420
 上課聽起來以為很簡單，結果還是寫了兩個禮拜，最後 FP_Growth 產生結果的方式還是不是很懂，算是有抄網路上的 open source
 
 其他說明文件沒提及的細節，或許在程式碼的註解中可以找到
-
-希望未來有機會可以接觸到更深物件導向的觀念～
 
 ```mermaid
 graph LR

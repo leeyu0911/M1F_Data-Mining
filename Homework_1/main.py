@@ -6,7 +6,6 @@ pycharm: 2020.2.3
 from Homework_1.FP_Growth import *
 from Homework_1.apriori_algorithm import *
 from time import time
-import matplotlib.pyplot as plt
 
 
 def deal_lecture_data(chose_type=1):
