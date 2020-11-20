@@ -37,22 +37,22 @@ Discuss anything you can
     * Decision tree 
     * Naïve bayes 
     * …
-    
+    <br />
 ---
 ## Rule
 如何判斷一台"超酷"的電腦？
 我們假定一台電腦共有30個屬性，其中用來判斷是否是一台"超酷"的電腦共有四個判斷條件(k = 4)，
 而每個屬性(features/attributes)我們都用0~10的數字來表示，數字越大代表該屬性越好。
-以下為“超酷”電腦所該擁有的四個條件：
+以下為"超酷"電腦所該擁有的四個條件：
 
 * CPU: 7
 * RAM: 7
 * GPU: 7
 * SSD: 7  
 
-而剩下26個屬性我們分別用A~Z來表示。且他們的分數並不會影響我們判斷是否為“超酷”的電腦。
+而剩下26個屬性我們分別用A~Z來表示。且他們的分數並不會影響我們判斷是否為"超酷"的電腦。
     
-    
+    <br />
     
 ## Compare the rules
 以下測試包含gini和entropy在不同數量的訓練集中的表現(測試集10000筆)  
@@ -67,16 +67,16 @@ Discuss anything you can
         ![](res/DecisionTree_1000.jpg)
     * 10000筆時的DecisionTree，Accuracy:100%  
         ![](res/DecisionTree_10000.jpg)
-    
+    <br />
 * Entropy
     可以發現利用entropy的策略在同樣是450筆的訓練集上效果表現比使用gini上好一點，DecisionTree的規則都有抓到對的欄位，但數值上還是差了一點，
     推測應該是訓練資料中沒有剛好符合邊界的。而當資料達到1000筆以上時，不管使用gini或是entropy效果都是相同的。  
 
-    * 450筆時的DecisionTree，Accuracy:99.72%
+    * 450筆時的DecisionTree，Accuracy:99.72%  
         ![](res/DecisionTree_450_entropy.jpg)
-    * 1000筆時的DecisionTree，Accuracy:100%
+    * 1000筆時的DecisionTree，Accuracy:100%  
         ![](res/DecisionTree_1000_entropy.jpg)
-    * 10000筆時的DecisionTree，Accuracy:100%
+    * 10000筆時的DecisionTree，Accuracy:100%  
         ![](res/DecisionTree_10000_entropy.jpg)
 
 
