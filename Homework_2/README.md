@@ -37,9 +37,9 @@ Discuss anything you can
     * Decision tree 
     * Naïve bayes 
     * …
+---
 <br/>
 
----
 ## Rule
 如何判斷一台"超酷"的電腦？
 我們假定一台電腦共有30個屬性，其中用來判斷是否是一台"超酷"的電腦共有四個判斷條件(k = 4)，
