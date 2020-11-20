@@ -37,7 +37,8 @@ Discuss anything you can
     * Decision tree 
     * Naïve bayes 
     * …
-    <br />
+<br/>
+
 ---
 ## Rule
 如何判斷一台"超酷"的電腦？
@@ -51,9 +52,8 @@ Discuss anything you can
 * SSD: 7  
 
 而剩下26個屬性我們分別用A~Z來表示。且他們的分數並不會影響我們判斷是否為"超酷"的電腦。
-    
-    <br />
-    
+<br/>
+
 ## Compare the rules
 以下測試包含gini和entropy在不同數量的訓練集中的表現(測試集10000筆)  
 
@@ -78,8 +78,6 @@ Discuss anything you can
         ![](res/DecisionTree_1000_entropy.jpg)
     * 10000筆時的DecisionTree，Accuracy:100%  
         ![](res/DecisionTree_10000_entropy.jpg)
-
-
 
 ## Discuss
 不管是訓練集或是測試集，我都是用亂數去產生的，然後再用規則去標註資料。  
