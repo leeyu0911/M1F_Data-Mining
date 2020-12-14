@@ -270,25 +270,4 @@ P76091420
 
 <br/><br/><br/><br/><br/>
 
-~~覺得不會用到class，是你不會用class．~~
-
-寫過最多class的一次～
-
-上課聽起來以為很簡單，結果還是寫了兩個禮拜，最後 FP_Growth 產生結果的方式還是不是很懂，算是有抄網路上的 open source
-
-其他說明文件沒提及的細節，或許在程式碼的註解中可以找到
-
-```mermaid
-graph LR
-IBM(IBM dataset) --> Dataclean{Data clean}
-Kaggle(Kaggle dataset) --> Dataclean
-Dataclean --> A((Apriori)) --> result
-Dataclean --> F((FP_Growth)) --> result
-```
-
-![](result/Snipaste_2020-10-25_17-58-39.jpg)
-
-
-
-
 
