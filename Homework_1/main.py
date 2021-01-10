@@ -182,8 +182,8 @@ if __name__ == '__main__':
             {'min_support': 600},
             {'min_support': 50}]
     # run and write to file
-    for i, t in enumerate(task1):
-        to_file(t(**arg1[i]), str(task1[i]).split(' ')[1] + add_args_to_filename(arg1[i]) + '.json')
+    # for i, t in enumerate(task1):
+    #     to_file(t(**arg1[i]), str(task1[i]).split(' ')[1] + add_args_to_filename(arg1[i]) + '.json')
 
     # -----FP_Growth test-----
     task2 = [FP_Growth_test_set.test_from_lecture,
@@ -193,11 +193,11 @@ if __name__ == '__main__':
             {'min_support': 50, 'confidence': 0.6},
             {'min_support': 18, 'confidence': 0.6}]
     # run and write to file
-    for i, t in enumerate(task2):
-        to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + add_args_to_filename(arg2[i]) + '.json')
-        print(str(task2[i]).split(' ')[1])
-        print(t(**arg2[i]))
-        print()
+    # for i, t in enumerate(task2):
+    #     to_file(t(**arg2[i]), str(task2[i]).split(' ')[1] + add_args_to_filename(arg2[i]) + '.json')
+    #     print(str(task2[i]).split(' ')[1])
+    #     print(t(**arg2[i]))
+    #     print()
 
 
     # -----test time-----
@@ -205,14 +205,16 @@ if __name__ == '__main__':
     k2 = []
     print('Kaggle:')
     for i in range(10):
-        k1.append(Test_time(deal_kaggle_data(), 'apriori', min_support=50).time)
-        k2.append(Test_time(deal_kaggle_data(), 'FP_growth', min_support=50).time)
+        print(i)
+        k1.append(Test_time(deal_kaggle_data(), 'apriori', min_support=18).time)
+        k2.append(Test_time(deal_kaggle_data(), 'FP_growth', min_support=18).time)
+    print(Test_time(deal_kaggle_data(), 'apriori', min_support=500).result)
 
     print()
 
     i1 = []
     i2 = []
     print('IBM:')
-    for i in range(10):
-        i1.append(Test_time(deal_IBM_data(), 'apriori', min_support=18).time)
-        i2.append(Test_time(deal_IBM_data(), 'FP_growth', min_support=18).time)
+    # for i in range(10):
+    #     i1.append(Test_time(deal_IBM_data(), 'apriori', min_support=18).time)
+    #     i2.append(Test_time(deal_IBM_data(), 'FP_growth', min_support=18).time)
