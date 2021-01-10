@@ -5,13 +5,13 @@ from tqdm import tqdm
 # d = {'a':1, 'b': 2, 'c': 3}
 
 # TODO: hash tree實作
-def combinations_by_hash_tree(sequence, length, result):
-    if not sequence:
-        return
-    sequence = sorted(sequence)
-    for i in range(len(sequence) - length + 1):
-        result.append(sequence[i:])
-        combinations_by_hash_tree(sequence[i + 1:], length, result)
+# def combinations_by_hash_tree(sequence, length, result):
+#     if not sequence:
+#         return
+#     sequence = sorted(sequence)
+#     for i in range(len(sequence) - length + 1):
+#         result.append(sequence[i:])
+#         combinations_by_hash_tree(sequence[i + 1:], length, result)
 
 # finish
 def transaction_frequent(transactions, min_suport):
