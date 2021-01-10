@@ -34,7 +34,6 @@ Use IBM Quest Synthetic Data Generator
 
 <br/>
 
-P76091420
 
 ## 程式檔案 
 
