@@ -109,7 +109,7 @@ class FP_Tree:
         elif num_children == 0:
             return True
         else:
-            return True and self.tree_has_single_path(node.children[0])
+            return True and self.tree_has_single_path(node.children[0])  # TODO: True 是否可以省略？
 
     def mine_patterns(self, min_support):
         """
