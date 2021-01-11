@@ -1,0 +1,16 @@
+A,a
+A,c
+B,a
+B,b
+B,c
+B,d
+C,c
+C,d
+a,A
+a,B
+b,B
+c,A
+c,B
+c,C
+d,B
+d,C
